@@ -19,7 +19,7 @@ export class UserRepository {
         return await this.repository.find({
             order: {
                 nome: "ASC",
-                username: "DESC"
+                username: "DESC",
             },
             where: {},
         });
@@ -28,8 +28,8 @@ export class UserRepository {
     async update(username: string, data: Partial<IUser>) {
         const user = await this.repository.findOne(username);
 
-        if(!user) {
-            throw Error('User nao existe');
+        if (!user) {
+            throw Error("User nao existe");
         }
 
         // user.idade = Number(data.idade);
@@ -37,7 +37,7 @@ export class UserRepository {
         // this.repository.save(user);
 
         await this.repository.update(username, {
-            idade: data.idade ?? user.idade
+            idade: data.idade ?? user.idade,
         });
     }
 }
